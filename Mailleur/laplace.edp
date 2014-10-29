@@ -1,0 +1,16 @@
+// generation maillage cercle
+{
+ verbosity=2;
+ border gamma(t=0,2*pi)
+ { x=2*cos(t); y=2*sin(t);}
+ mesh Th=buildmesh(gamma(20));
+ savemesh(Th,"cercle.msh");
+ plot(Th);
+
+ fespace Vh(Th,P1);
+ Vh u,v,f=1;
+
+ solve Lapace(u,v)= int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) 
+           - int2d(Th)(f*v) + on(gamma,u=0); 
+ plot(u);
+}

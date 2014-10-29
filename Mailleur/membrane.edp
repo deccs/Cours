@@ -1,0 +1,16 @@
+
+real theta=4.*pi/3.;real a=2.,b=1.; func Z=0.;
+border Gamma1(t=0,theta)    { x = a * cos(t); y = b*sin(t); label=1; }
+border Gamma2(t=theta,2*pi) { x = a * cos(t); y = b*sin(t); label=2; }
+// maillage
+mesh Th=buildmesh(Gamma1(40)+Gamma2(20));
+savemesh(Th,"membrane.msh");
+// solveur
+fespace Vh(Th,P1);
+Vh phi,w, f=1;
+solve Laplace(phi,w)=int2d(Th)(dx(phi)*dx(w) + dy(phi)*dy(w)) - int2d(Th)(f*w) + on(Gamma2,phi=0) + on(Gamma1,phi=Z);
+// ecriture resultat
+{ ofstream ff("membrane.res"); 
+  ff<<phi[].n<<endl; 
+  for(int i=0; i<phi[].n;i++) ff<<phi[][i]<<endl; 
+}

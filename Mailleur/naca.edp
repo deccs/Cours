@@ -1,0 +1,13 @@
+
+border aa(t=0,2*pi) { x=2*cos(t); y=2*sin(t); label=1; };
+border bb(t=0,2) {
+if(t<=1) { 
+    x= t-0.5; 
+    y= 0.17735*sqrt(t)-0.075597*t-0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4);} else {
+    x= 2-t-0.5;
+    y= -(0.17735*sqrt(2-t)-0.075597*(2-t)-0.212836*((2-t)^2)+0.17363*((2-t)^3) - 0.06254*(2-t)^4);}; 
+label=2; }
+mesh Th=buildmesh(aa(40)+bb(41));
+savemesh(Th,"naca.msh");
+
+savemesh(Th,"naca.msh");

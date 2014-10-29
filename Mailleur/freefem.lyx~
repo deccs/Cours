@@ -1,0 +1,766 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% test si Latex ou PDFLatex
+\input{preambul.inc}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding latin1
+\fontencoding global
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 0
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifpdf
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+university{UNIVERSITE CLAUDE BERNARD LYON I
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+UFR de mécanique}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+version{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+copyrightyears{2004}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+email{buffat@ufrmeca.univ-lyon1.fr}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Méthodes des éléments finis
+\begin_inset Newline newline
+\end_inset
+
+Maillage elements finis
+\begin_inset Newline newline
+\end_inset
+
+Introduction à FreeFem++
+\end_layout
+
+\begin_layout Author
+master M2Pro
+\begin_inset Newline newline
+\end_inset
+
+Pr.
+ Marc BUFFAT
+\end_layout
+
+\begin_layout Section
+Exemple de Maillage E.F.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename mesh1.eps
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Maillage éléments finis
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Structure de données
+\end_layout
+
+\begin_layout Enumerate
+Table de connection
+\end_layout
+
+\begin_layout Enumerate
+Coordonnées des noeuds
+\end_layout
+
+\begin_layout Enumerate
+Frontière (noeuds)
+\end_layout
+
+\begin_layout Enumerate
+Région
+\end_layout
+
+\begin_layout Subsection
+Exemple de Frontieres
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename mesh2.eps
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Exemple de Région
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename mesh3.eps
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Génération de Maillage
+\end_layout
+
+\begin_layout Subsection
+Génération par transformation
+\end_layout
+
+\begin_layout Standard
+Transformation conforme vers un carre unité
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename quacou1.eps
+	width 40page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename quacou2.eps
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Voronoi
+\end_layout
+
+\begin_layout Standard
+Mailleur automatique
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename voronoi.eps
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mailleur FreeFem 
+\end_layout
+
+\begin_layout Standard
+(c) O.
+ Pironneau Paris VI (http://www.freefem.org/)
+\end_layout
+
+\begin_layout Subsection
+mailleur automatique Voronoi P1 (2D)
+\end_layout
+
+\begin_layout Itemize
+solveur matriciel pour des matrices de type elts finis
+\end_layout
+
+\begin_layout Itemize
+interpréteur de commande (langage de programmation)
+\end_layout
+
+\begin_layout Itemize
+création d'un fichier de commande (extension .edp)
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+FreeFem++ probleme.edp
+\end_layout
+
+\begin_layout Subsection
+syntaxe FreeFem++
+\end_layout
+
+\begin_layout Itemize
+syntaxe proche du C++
+\end_layout
+
+\begin_layout Itemize
+fin instruction 
+\series bold
+;
+\end_layout
+
+\begin_layout Itemize
+structure : 
+\series bold
+{ ..
+ };
+\end_layout
+
+\begin_layout Itemize
+variables: 
+\series bold
+pi=3.1456;
+\end_layout
+
+\begin_layout Itemize
+résolution d'EDP 
+\end_layout
+
+\begin_layout Subsection
+Mailleur
+\end_layout
+
+\begin_layout Itemize
+description de la frontiere (sens trigonométrique)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim} 
+\end_layout
+
+\begin_layout Plain Layout
+
+      border nom1(t=t0,t1)
+\end_layout
+
+\begin_layout Plain Layout
+
+      {
+\end_layout
+
+\begin_layout Plain Layout
+
+        x=f1(t);
+\end_layout
+
+\begin_layout Plain Layout
+
+        y=g1(t);
+\end_layout
+
+\begin_layout Plain Layout
+
+	    label=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+	  border nom2(t=t0,t1)
+\end_layout
+
+\begin_layout Plain Layout
+
+      {
+\end_layout
+
+\begin_layout Plain Layout
+
+        x=f2(t);
+\end_layout
+
+\begin_layout Plain Layout
+
+        y=g2(t);
+\end_layout
+
+\begin_layout Plain Layout
+
+		label=2;
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+description des frontieres par C.L.
+\end_layout
+
+\begin_layout Itemize
+création et visualisation du maillage
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+mesh Th=buildmesh(nom1(n1)+nom2(n2));
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+sauvegarde
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+savemesh(Th,'nom_fichier.msh');
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+border gamma(t=0,2*pi) 
+\end_layout
+
+\begin_layout Plain Layout
+
+{ x=2*cos(t); y=2*sin(t);}
+\end_layout
+
+\begin_layout Plain Layout
+
+Th=buildmesh(gamma(20);
+\end_layout
+
+\begin_layout Plain Layout
+
+savemesh(Th,"cercle.msh");
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename cercle.eps
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solveur
+\end_layout
+
+\begin_layout Itemize
+Definition du problème
+\end_layout
+
+\begin_layout Itemize
+Exemple : inconnu champ 
+\series bold
+v
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+fespace Vh(Th,P1)
+\end_layout
+
+\begin_layout Plain Layout
+
+Vh u,v,f=1;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solve Lapace(u,v)= int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+           - int2d(Th)(f*v) + on(Gamma,u=0); 
+\end_layout
+
+\begin_layout Plain Layout
+
+end;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename cercle11.eps
+	width 40page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Condition aux limites sur une frontière
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{\Gamma_{1}}+\alpha(\frac{\partial u}{\partial n})_{\Gamma_{1}}=g$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+on(Gamma,id(u)+a*dnu(u)=g)
+\end_layout
+
+\begin_layout Plain Layout
+
+on(Gamma,u=g)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Equation Formulation Faible 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+int2d(Th)()
+\end_layout
+
+\begin_layout Plain Layout
+
+int(Gamma) ()
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La liste des opérateurs (op1 ou op2)
+\end_layout
+
+\begin_layout Enumerate
+id(), dx(), dy(), laplace(), dxx(), dyy(), dyx(), dxy()
+\end_layout
+
+\begin_layout Description
+ATTENTION: dxy(u)*f = dx(f*dy(u)) et laplace(u)*(x+y)=div((x+y)*grad(u))
+\end_layout
+
+\begin_layout Subsection
+Tracé et sauvegarde de la solution
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(Th);
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(u);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,9 @@
+// generation maillage cercle
+{
+ verbosity=2;
+ border gamma(t=0,2*pi)
+ { x=2*cos(t); y=2*sin(t);}
+ mesh Th=buildmesh(gamma(20));
+ savemesh(Th,"cercle.msh");
+ plot(Th);
+}

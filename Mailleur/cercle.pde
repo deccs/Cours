@@ -1,0 +1,8 @@
+nowait;
+border(1,0,2*pi,10) {
+x:=2*cos(t);
+y:=2*sin(t);
+};
+buildmesh(200);
+nowait;
+savemesh('cercle');
