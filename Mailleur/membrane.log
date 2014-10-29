@@ -23,6 +23,6 @@
   number of required edges : 0
   -- Solve : 
           min 3.64522e-32  max 0.40103
-times: compile 0.003413s, execution 0.008212s,  mpirank:0
+times: compile 0.003435s, execution 0.008164s,  mpirank:0
  CodeAlloc : nb ptr  2543,  size :327984 mpirank: 0
 Bien: On a fini Normalement

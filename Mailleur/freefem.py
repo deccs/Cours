@@ -198,12 +198,13 @@ def plotMat(Ai,titre):
         plt.draw()
         return
 # appel FreeFem++
-def meshFreefem(nom,script):
+def meshFreefem(nom,script,save=False):
         """ creation d'un maillage avec un script FreeFem """
         meshnom="%s.msh"%(nom)
         F=open("%s.edp"%(nom),'w')
         F.write(script)
-        F.write('\nsavemesh(Th,"%s");\n'%(meshnom))
+        if save:
+            F.write('\nsavemesh(Th,"%s");\n'%(meshnom))
         F.close()
         subprocess.call(["FreeFem++","%s.edp"%(nom)])
         G=mesh(meshnom)
