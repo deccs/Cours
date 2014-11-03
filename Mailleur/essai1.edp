@@ -7,5 +7,3 @@ border eee(t=0.5,1){x=1-t;y=1;label=2;};
 border fff(t=0,1){x=0;y=1-t;label=2;};
 mesh Th = buildmesh (aaa(6) + bbb(4) + ccc(4) +ddd(4) + eee(4) + fff(6));
 savemesh(Th,"essai1.msh");
-
-savemesh(Th,"essai1.msh");

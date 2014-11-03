@@ -9,5 +9,3 @@ if(t<=1) {
 label=2; }
 mesh Th=buildmesh(aa(40)+bb(41));
 savemesh(Th,"naca.msh");
-
-savemesh(Th,"naca.msh");
