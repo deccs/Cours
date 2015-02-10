@@ -1,0 +1,5 @@
+real a=2.,b=1.; 
+border Gamma(t=0,2*pi)  { x = a*cos(t);   y = b*sin(t); label=1; }
+// maillage
+mesh Th=buildmesh(Gamma(50));
+savemesh(Th,"ellipse.msh");

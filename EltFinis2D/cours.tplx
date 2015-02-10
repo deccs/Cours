@@ -1,0 +1,35 @@
+% Default to the notebook output style
+((* if not cell_style is defined *))
+    ((* set cell_style = 'style_ipython.tplx' *))
+((* endif *))
+
+% Inherit from the specified cell style.
+((* extends cell_style *))
+
+
+%===============================================================================
+% Latex Article pour le cours
+%===============================================================================
+
+((* block docclass *))
+\documentclass[12]{article}
+\usepackage[francais]{babel}
+\usepackage{titling}
+\pretitle{\begin{flushright}\LARGE} % makes document title flush right
+\posttitle{\end{flushright}}
+\preauthor{\begin{flushright}\large} % makes author flush right
+\postauthor{\end{flushright}}
+\predate{\begin{flushright}\large} % makes date title flush right
+\postdate{\end{flushright}}
+((* endblock docclass *))
+
+((* block author *))
+\author{Pr Marc BUFFAT\\département mécanique,Université Claude Bernard Lyon 1}
+((* endblock author *))
+
+((* block title *))
+\title{\huge{EXERCICE}\\Programmation EF 2D sous Python}
+((* endblock title *))
+
+((* block abstract *))
+((* endblock abstract *))

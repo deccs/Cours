@@ -1,0 +1,11 @@
+// generation maillage ellipse 
+{
+ verbosity=2;
+ border gamma(t=0,2*pi)
+ { x=2*cos(t); y=sin(t);}
+ border cercle(t=0,2*pi)
+ { x=0.5*cos(t); y=0.5*sin(t); }
+ mesh Th=buildmesh(gamma(100)+cercle(20));
+ savemesh(Th,"ellipse.msh");
+ plot(Th);
+}
