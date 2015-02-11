@@ -6,6 +6,7 @@ Notebook du cours "Python Scientifique" (master M1)
 
 * [Introduction à la programmation scientifique](http://nbviewer.ipython.org/github/mbuffat/Cours/blob/master/PythonScientifique/Introduction.ipynb)
 * [Python scientifique](http://nbviewer.ipython.org/github/mbuffat/Cours/blob/master/PythonScientifique/PythonScientifique.ipynb)
+* [Bibliothéques scientifiques (scipy/matplotlib)](http://nbviewer.ipython.org/github/mbuffat/Cours/blob/master/PythonScientifique/BibliothequesScientifique.ipynb)
 
 
 Notebook du cours "Outils numérique pour la mécanique" (master M2)
